@@ -65,3 +65,62 @@ switch (level) {
         msg = 'Good luck!';
         break;
 }
+
+
+// USING FOR LOOPS 
+var scores = [24, 32, 17]; // Array of scores
+var arrayLength = scores.length; // Item in array 
+var roundNumber = 0; // Current round
+var msg = ''; // Message 
+var i; // Counter 
+// Loop through the items in the array
+for (i = 0; i < arrayLength; i++) {
+    // Arrays are zero based (so 0 is round 1)
+    // Add 1 to the current round 
+    roundNumber = (i + 1);
+    // Write the current round to the message
+    msg += 'Round' + roundNumber + ': ';
+    // Get the score from the score array
+    msg += scores[i] + '<br />';
+}
+
+
+// USING WHILE LOOPS 
+var i = 1; // Set counter to 1
+var msg = ''; // Message
+// Store 5 times table in a variable
+while (i < 10) {
+    msg += i + ' x 5 = ' + (i * 5) + ' <br />';
+    i++;
+}
+
+
+// USING DO...WHILE LOOPS
+var i = 1; // Set counter to 1
+var msg = ''; // Message
+// Store 5 times table in a variable
+do {
+    msg += i + ' x 5 = ' + (i * 5) + '<br />';
+    i++;
+} while (i < 1);
+// Note how this is already 1 and it still runs
+
+
+
+// EXAMPLE
+var table = 3; // Unit of table
+var operator = 'addition'; // Type of calculation (default to addition)
+var i = 1; // Set counter is 1
+var msg = ''; // Message
+
+if (operator === 'addition') { // If the operator variable says addition
+    while (i < 11) { // While counter is less than 11
+        msg += i + ' + ' + table + ' = ' + (i + table) + '<br />'; // Calculation
+        i++; // Add 1 to the counter 
+    }
+} else { // Otherwise
+    while (i < 11) { // While counter is less than 11
+        msg += i + ' x ' + table + ' = ' + (i * table) + '<br />'; // Calculation
+        i++; // Add 1 to the counter 
+    }
+}
