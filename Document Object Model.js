@@ -35,3 +35,19 @@ if (elements > 1) {  // If 1 or more are found
 }
 
 
+
+// SELECTING ELEMENTS USING CSS SELECTORS 
+//querySelector() only return the first match 
+var el = document.querySelector('li.hot');
+el.className = 'cool';
+// querySelectorAll() return a Nodelist
+var els = document.querySelectorAll('li.hot');
+els[1].className = 'cool';
+
+
+
+// REPEATING ACTIONS FOR AN ENTIRE NODELIST
+var hotItems = document.querySelectorAll('li.hot') 
+for (var i = 0; i < hotItems.length; i++) {
+    hotItems[i].className = 'cool';  // hotItems[i] repeat the statement for each item in the Nodelist 
+}
