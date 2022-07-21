@@ -51,3 +51,59 @@ var hotItems = document.querySelectorAll('li.hot')
 for (var i = 0; i < hotItems.length; i++) {
     hotItems[i].className = 'cool';  // hotItems[i] repeat the statement for each item in the Nodelist 
 }
+
+
+
+// LOOPING THROUGH A NODELIST 
+// Store NodeList in an array 
+var hotItems = document.querySelectorAll('li.hot');
+if (hotItems.length > 0) {  // If it contain items
+    for (var i = 0; i < hotItems.length; i++) {  // Loop through each item
+        hotItems[i].className = 'cool'; // Change value of class attribute
+    }
+}
+
+
+
+// PREVIOUS AND NEXT SIBLING 
+// Select the starting point and find its siblings
+var startItem = document.getElementById('two');
+var preItem = startItem.preSibling;
+var nextItem = startItem.nextSibling;
+// Change the value of the siblings' class attributes
+preItem.className = 'cool';
+nextItem.className = 'cool';
+
+
+
+//  FIRST AND LAST CHILD 
+// Select the starting point and find its children 
+var startItem = document.getElementsByTagName('ul')[0];
+var firstItem = startItem.firstChild;
+var lastItem = startItem.lastChild;
+// Change the value of the children's class attributes
+firstItem.setAttribute('class', 'complete');
+lastItem.setAtribute('class', 'cool');
+
+
+
+// ACCESS AND UPDATE A TEXT NODE WITH nodeValue property 
+<li id="one"><em>fresh</em> figs</li>
+var hoang = document.getElementById('one').firstChild.nextSibling.nodeValue;
+// Another way 
+var hoang = document.getElementById('one').lastChild.nodeValue;
+
+
+
+// ACCESSING AND CHANGING A TEXT NODE 
+var itemTwo = document.getElementById('two');
+// firstChild property is required to accessing the text
+var text = itemTwo.firstChild.nodeValue;
+    // or var text = itemTwo.lastChild.nodeValue; (because it has only one child)
+// Changing the text inside the text node using String object replace() method
+text = text.replace('pine nuts', 'kale');
+// Update the list item
+itemTwo.firstChild.nodeValue = text;
+/* Note: - using the same variable name when accessing and changing the text
+        - when update vaiable name (changing) = value (accessing)
+*/
