@@ -154,3 +154,11 @@ newEl.appendChild(newText);
 var position = document.getElementsByTagName('ul')[0];
 // Insert the new element into its position 
 position.appendChild(newEl);
+
+
+
+// REMOVE AN ELEMENT FROM THE DOM TREE
+// The element you want to remove
+var removeEl = document.getElementsByTagName('li')[3];
+var containerEl = removeEl.parentNode; // It containing element
+containerEl.removeChild(removeEl); // Removing the element 
