@@ -107,3 +107,50 @@ itemTwo.firstChild.nodeValue = text;
 /* Note: - using the same variable name when accessing and changing the text
         - when update vaiable name (changing) = value (accessing)
 */
+
+
+
+// ACCESSING TEXT ONLY (COMPARE THE DIFFERENT BETWEEN textContent and innerText)
+var firstItem = document.getElementById('one'); // Find the first list item
+var showTextContent = firstItem.textContent;
+var showInnerText = firstItem.innerText;
+// Show the content of two properties at the end of the list
+var msg = '<p>textContent: ' + showTextContent + '</p>';
+msg += '<p>innerText: ' + showInnerText + '</p>';
+var el = document.getElementById('scriptResults'); // Accessing the element node  
+el.innerHTML = msg; // Adding content to the node (using innerHTML property - show below)
+firstItem.textContent = 'sourdough bread'; // Update the first list item
+
+
+
+// ACCESS AND UPDATE TEXT AND MARKUP WITH innerHTML
+<li id="one"><em>fresh</em> figs</li> 
+// Collect content of the list item and add it to variable call elContent
+var elContent = document.getElementById('one').innerHTML; // '<em>fresh</em> figs'
+// Add the content of the elContent variable to the first list item
+document.getElementById('one').innerHTML = elContent;
+
+
+
+// UPDATE TEXT AND MARKUP 
+// Store the first item in a variable
+var firstItem = document.getElementById('one');
+// Get the content of the first item list 
+var itemContent = firstItem.innerHTML;
+// Update the content of the first list item so it is a link  
+firstItem.innerHTML = '<a href=\"https://example.org\">' + itemContent + '</a>';
+
+
+
+
+// ADDING AN ELEMENT TO THE DOM TREE
+// Create a new element and store it in a variable 
+var newEl = document.createElement('li');
+// Create a text node and store it in a variable 
+var newText = document.createTextNode('quinoa');
+// Attach the new text node to the new element 
+newEl.appendChild(newText);
+// Find the position where the new element should be added 
+var position = document.getElementsByTagName('ul')[0];
+// Insert the new element into its position 
+position.appendChild(newEl);
