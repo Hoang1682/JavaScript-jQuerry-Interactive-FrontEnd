@@ -162,3 +162,15 @@ position.appendChild(newEl);
 var removeEl = document.getElementsByTagName('li')[3];
 var containerEl = removeEl.parentNode; // It containing element
 containerEl.removeChild(removeEl); // Removing the element 
+
+
+
+// CHECK FOR AN ATTRIBUTE AND GET IT VALUE 
+// Get the first list item 
+var firstItem = document.getElementById('one');
+if (firstItem.hasAttribute('class')) {  // If it has class attribute
+    var attr = firstItem.getAttribute('class'); // Get it attribute
+    // Add the value of the attribute after the list 
+    var el = document.getElementById('scriptResult');
+    el.innerHTML = '<p>The first item has class name: ' + attr + '<p>';
+}
