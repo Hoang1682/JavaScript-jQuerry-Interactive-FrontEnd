@@ -174,3 +174,21 @@ if (firstItem.hasAttribute('class')) {  // If it has class attribute
     var el = document.getElementById('scriptResult');
     el.innerHTML = '<p>The first item has class name: ' + attr + '<p>';
 }
+
+
+
+// CREATING ATTRIBUTE AND CHANGING THEIR VALUES 
+// Get the first item
+var firstItem = document.getElementById('one');
+firstItem.className = 'complete'; // Change its class attribute
+var fourthItem = document.getElementsByTagName('li').item(3); // Get fourth item 
+els2.setAtribute('class', 'cool');  // Add an attribute to it
+
+
+
+// REMOVING ATTRIBUTES
+//Get the first item 
+var firstItem = document.getElementById('one');
+if (firstItem.hasAttribute('class')) {  // If it has class attribute
+    firstItem.removeAttribute('class');  // Remove its class attribute 
+}
