@@ -63,4 +63,55 @@ function checkUsername(minLength) { // declare function
 }
 elUsername.addEventListener('blur', function() { // when it lose focus
     checkUsername(5); // pas argument here
-}, false);
+}, false); 
+
+
+
+// FALLBACK FOR USING EVENT LISTENERS IN IE8
+var elUsername = document.getElementById('username'); // get username input 
+var elMsg = document.getElementById('feedback'); // get feedback element 
+function checkUsername(minLength) { // declare the function 
+    if (elUsername.value.length < minLength) { // if the username too short
+        elMsg.textContent = 'User name must be ' + minLength + ' charaters or more';
+    } else { // otherwise
+        elMsg.textContent = ''; // clear msg 
+    }
+}
+if (elUsername.addEventListener) { // if event listener support
+    elUsername.addEventListener('blur', function() { // when username lose focus 
+        checkUsername(5); // call checkUsername()
+    }, false ); // capture during bubble phase 
+} else { // otherwise 
+    elUsername.attachEvent('onblur', function() { // IE fallback: onblur
+        checkUsername(5); // call checkUsername()
+    });
+}
+
+
+
+// USING EVENT LISTENERS WITH THE EVENT OBJECT
+function checkLength(e, minLength) { // declare function 
+    var el, elMsg; // declare variable 
+    if (!e) { // if event object doesn't exist 
+        e = window.event; // if it doesn't exist set it to the child of window object
+    }
+    el = e.target || e.srcElement; // get target of event 
+    elMsg = el.nextSibling; // get its next sibling 
+
+    if (el.value.length < minLength) { // if the username too short
+        elMsg.innerHTML = 'Username must be ' + minLength + ' charater or more';
+    } else { // otherwise 
+        elMsg.innerHTML = ''; // clear msg 
+    }
+}
+
+var elUsername = document.getElementById('username'); // query element: get username input
+if (elUsername.addEventListener) { // if the event listener support
+    elUsername.addEventListener('blur', function(e) { // on blur event 
+        checkLength(e, 5); // call checkUsername()
+    }, false ); // capture in bubble phase
+} else { // otherwise 
+    elUsername.attachEvent('onblur', function(e) { // IE fallback onblur 
+        checkLength(e, 5); // call checkUsername()
+    });
+}
