@@ -10,7 +10,7 @@
     <input type='submit' value='Sign up!'></input>
 </form>
 // HTML EVENT HANDLER ATTRIBUTES (DO NOT USE)
-function checkUsernam() { // Declare function 
+function checkUsername() { // Declare function 
     var elMsg = document.getElementById('feedback'); // Get feedback element
     var elUsername = document.getElementById('username'); // Get username input 
     if (elUsername.value.length < 5) { // If user name too short
@@ -19,3 +19,48 @@ function checkUsernam() { // Declare function
         elMsg.textContent = ''; // Clear message
     }
 }
+
+
+
+// USING DOM EVENT HANDLERS
+function checkUsername() { // declare function 
+    var elMsg = document.getElementById('feedback'); // get feedback element 
+    if(this.value.length < 5) {  // if userName too short
+        elMsg.textContent = 'User name must be 5 charaters or more'; // set msg 
+    } else { // otherwise 
+        elMsg.textContent = ''; // clear msg 
+    }
+}
+var elUsername = document.getElementById('username'); // get userName input
+elUsername.onblur = checkUsername; // when it lose focus call checkUsername()
+
+
+
+// USING EVENT LISTENERS
+function checkUsername() { // declare function 
+    var elMsg = document.getElementById('username'); // get feedback element
+    if (this.value.length < 5) { // if username too short
+        elMsg.textContent = 'Username must be 5 characters or more'; // set msg
+    } else { // otherwise 
+        elMsg.textContent = ''; // clear msg 
+    }
+}
+var elUsername = document.getElementById('username'); // get username input 
+// when it lose focus call checkUsername()
+elUsername.addEventListener('blur', checkUsername, false);
+
+
+
+// USING PARAMETERS WITH EVENT LISTENERS 
+var elUsername = document.getElementById('username'); // get username input 
+var elMsg = document.getElementById('feedback'); // get feedback element 
+function checkUsername(minLength) { // declare function 
+    if (elUsername.value.length < minLength) { // if user name too short
+        elMsg.textContent = 'Username must be ' + minLength + 'charaters or more';
+    } else { // otherwise 
+        elMsg.textContent = ''; //clear msg 
+    }
+}
+elUsername.addEventListener('blur', function() { // when it lose focus
+    checkUsername(5); // pas argument here
+}, false);
