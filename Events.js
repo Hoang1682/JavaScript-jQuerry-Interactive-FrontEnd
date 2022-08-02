@@ -115,3 +115,42 @@ if (elUsername.addEventListener) { // if the event listener support
         checkLength(e, 5); // call checkUsername()
     });
 }
+
+
+
+
+// USING EVENT DELEGATION 
+function getTarget(e) { // declare function to get the element user click on 
+    if (!e) { // check if there is no event object 
+        e = window.event; // if no: set it to the child of window 
+    }
+    return e.target || e.srcElement; // get target of the event 
+}
+
+function itemDone() { // declare funcion to remove item when its complete
+    // remove item from the list 
+    var target, elParent, elGrandparent; // declare the variable to hold the information 
+    target = getTarget(e); // get the element the user click on 
+    elParent = target.parentNode; // get it parent element (the <li> element)
+    elGrandparent = target.parentNode.parentNode; //get it grandparenet (the <ul> element)
+    elGrandparent.removeChild(elParent); // remove the <li> element from the <ul> element 
+
+    // prevent link to taking you to the new page 
+    if (e.preventDefault) { // check if the preventDefault is support
+        e.preventDefault(); // use method preventDefault()
+    } else { // otherwise 
+        e.returnValue = false; // use returnValue property support on the older version 
+    }
+}
+
+// set up event listener to call itemDone() on click
+var el = document.getElementById('shoppingList'); // query the containing element
+if (el.addEventListener) { // if event listener is work
+    el.addEventListener('click', function() { // add event listener on click
+        itemDone(e); // call function itemDone()
+    },false); // use bubbing phase for flow 
+} else { // otherwise 
+    el.attachEvent('onclick', function() { // using attachEvent method support on the older browser 
+        itemDone(e); // call function itemDone()
+    });
+}
