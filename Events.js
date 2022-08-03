@@ -38,7 +38,7 @@ elUsername.onblur = checkUsername; // when it lose focus call checkUsername()
 
 // USING EVENT LISTENERS
 function checkUsername() { // declare function 
-    var elMsg = document.getElementById('username'); // get feedback element
+    var elMsg = document.getElementById('feedback'); // get feedback element
     if (this.value.length < 5) { // if username too short
         elMsg.textContent = 'Username must be 5 characters or more'; // set msg
     } else { // otherwise 
@@ -143,7 +143,7 @@ function itemDone() { // declare funcion to remove item when its complete
     }
 }
 
-// set up event listener to call itemDone() on click
+// SET UP EVENT LISTENER TO CALL itemDome() ON CLICK 
 var el = document.getElementById('shoppingList'); // query the containing element
 if (el.addEventListener) { // if event listener is work
     el.addEventListener('click', function() { // add event listener on click
@@ -153,4 +153,30 @@ if (el.addEventListener) { // if event listener is work
     el.attachEvent('onclick', function() { // using attachEvent method support on the older browser 
         itemDone(e); // call function itemDone()
     });
+}
+
+
+
+
+// WHICH ELEMENT DID AN EVENT OCCUR ON?
+// Using this keyword
+function checkUsername() {
+    var elMsg = document.getElementById('feedback');
+    if (this.value.length < 5) {
+        elMsg.innerHTML = 'Not long enough';
+    } else {
+        elMsg.innerHTML = '';
+    }
+}
+var el = document.getElementById('username');
+el.addEventListener('blur', checkUsername ,false);
+
+// Using parameters 
+function chekUsername(el, minLength) {
+    var elMsg = document.getElementById('feedback');
+    if (el.value.length < minLength) {
+        elMsg.innerHTML = 'Not long enough';
+    } else {
+        
+    }
 }
