@@ -177,6 +177,21 @@ function chekUsername(el, minLength) {
     if (el.value.length < minLength) {
         elMsg.innerHTML = 'Not long enough';
     } else {
-        
+    elMsg.innerHTML = '';
     }
 }
+var el = document.getElementById('username');
+el.addEventListener('blur', function() {
+    chekUsername(el, 5);
+},false );
+
+
+
+
+// LOAD EVENT 
+function setup() { // declare function 
+    var textInput; // creat variable 
+    textInput = document.getElementById('username'); // query to the username input 
+    textInput.focus(); // give username focus 
+}
+window.addEventListener('load', setup, false); // when page load call setup() function
