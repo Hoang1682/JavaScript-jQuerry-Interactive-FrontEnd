@@ -195,3 +195,28 @@ function setup() { // declare function
     textInput.focus(); // give username focus 
 }
 window.addEventListener('load', setup, false); // when page load call setup() function
+
+
+
+
+// FOCUS AND BLUR EVENT 
+function checkUsername() { // declare function 
+    var username = el.value; // store username in function 
+    if (username.length < 5) { // if user name too short
+        elMsg.className = 'warning'; // change the class on the message
+        elMsg.textContent = 'Not long enough, yet...'; // update the message
+    } else { // otherwise 
+        elMsg.textContent = ''; // clear message 
+    }
+}
+function tipUsername() { // declare function 
+    elMsg.className = 'tip'; // change class for message 
+    elMsg.textContent = 'Username must be at least 5 characters'; // add message 
+}
+
+var el = document.getElementById('username'); // query to usernam input 
+var elMsg = document.getElementById('feedback'); // query to element hold message 
+
+// when the user name gain or lose focus call function above:
+el.addEventListener('focus', tipUsername, false); // focus call tipUsername()
+el.addEventListener('blur', checkUsername, false ); // blur call checkUsername()
