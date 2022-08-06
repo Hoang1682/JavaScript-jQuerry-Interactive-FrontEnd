@@ -220,3 +220,34 @@ var elMsg = document.getElementById('feedback'); // query to element hold messag
 // when the user name gain or lose focus call function above:
 el.addEventListener('focus', tipUsername, false); // focus call tipUsername()
 el.addEventListener('blur', checkUsername, false ); // blur call checkUsername()
+
+
+
+// CLICK 
+// create HMTL for the message 
+var msg = '<div class="header"><a id="close" href="#">close X</a></div>';
+msg += '<div><h2>System Mait</h2>';
+msg += 'Our server are being updated between 3 and 4 a.m. ';
+msg += 'During this time, there may be minor disruptions to service.</div>';
+
+var elNote = document.createElement('div'); // Create a new element 
+elNote.setAttribute('id', 'note'); // Add an id='note' attribute
+elNote.innerHTML = msg; // add the message 
+document.body.appendChild(elNote); // add it to the page 
+
+function dismissNote() { // declare function 
+    document.body.removeChild(elNote); // re move the note from the page 
+}
+  
+var elClose = document.getElementById('close'); // query to the close button 
+elClose.addEventListener('click', dismissNote, false); // click the close button to clear the note 
+
+
+
+// DETERMINING POSITION 
+var sx = document.getElementById('sx'); // query to element hold screenX
+var sx = document.getElementById('sy'); // query to element hold screenX
+var sx = document.getElementById('px'); // query to element hold screenX
+var sx = document.getElementById('py'); // query to element hold screenX
+var sx = document.getElementById('cx'); // query to element hold screenX
+var sx = document.getElementById('cy'); // query to element hold screenX
