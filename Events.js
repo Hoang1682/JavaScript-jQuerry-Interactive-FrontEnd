@@ -246,8 +246,38 @@ elClose.addEventListener('click', dismissNote, false); // click the close button
 
 // DETERMINING POSITION 
 var sx = document.getElementById('sx'); // query to element hold screenX
-var sx = document.getElementById('sy'); // query to element hold screenX
-var sx = document.getElementById('px'); // query to element hold screenX
-var sx = document.getElementById('py'); // query to element hold screenX
-var sx = document.getElementById('cx'); // query to element hold screenX
-var sx = document.getElementById('cy'); // query to element hold screenX
+var sx = document.getElementById('sy'); // query to element hold screenY
+var sx = document.getElementById('px'); // query to element hold pageX
+var sx = document.getElementById('py'); // query to element hold pageY
+var sx = document.getElementById('cx'); // query to element hold clientX
+var sx = document.getElementById('cy'); // query to element hold clientY
+
+function showPosition() { // declare function 
+    sx.value = event.screenX; // Update element with screenX
+    sy.value = event.screenY; // Update element with screeny
+    px.value = event.pageX; // Update element with pageX
+    py.value = event.pageY; // Update element with pageY
+    cx.value = event.clientX; // Update element with clientX
+    cy.value = event.clientY; // Update element with clientY
+}
+
+var el = document.getElementById('body'); // query to the body 
+el.addEventListener('mousemove', showPosition, false);
+
+
+
+// WHICH KEY WAS PRESSED
+var el ; // declare variable 
+
+function charCount(e) { // declare function (e: meaning the key was press)
+    var textEntered, charDisplay, counter, lastKey;
+    textEntered = document.getElementById('message').value;
+    charDisplay = document.getElementById('characterLeft');
+    counter = (180 - (textEntered.length));
+    charDisplay.textContent = counter;
+
+    lastKey = document.getElementById('lastKey');
+    lastKey.textContent = 'Last key in ASSCII code: ' + e.keyCode;
+}
+el = document.getElementById('message');
+el.addEventListener('keypress', charCount, false);
