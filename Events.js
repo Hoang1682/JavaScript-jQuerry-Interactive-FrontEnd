@@ -281,3 +281,57 @@ function charCount(e) { // declare function (e: meaning the key was press)
 }
 el = document.getElementById('message');
 el.addEventListener('keypress', charCount, false);
+
+
+
+// USING FORM EVENTS
+var elForm, elSelectPackage, elPackageHint, elTerms, elTermsHint; // declare variables
+elForm = document.getElementById('formSignup'); // query to the form element
+elSelectPackage = document.getElementById('package'); // query to the select element
+elPackageHint = document.getElementById('packageHint'); // query to the div element witht the id packHint
+elTermsHint = document.getElementById('termsHint'); // query to the div element with the id termsHint
+elTerms = document.getElementById('terms'); // query to the input checkbox element
+
+function packageHint() {
+    var package = this.option[this.selectedIndex].value; // query to the select > option 
+    if (package == 'monthly') {
+        elPackageHint.innerHTML = 'Save $10 if you pay for 1 year!'; // Show msg
+    } else { // otherwise 
+        elPackageHint.innerHTML = 'Wise choice!'; // show msg
+    }
+}
+
+function checkTerms(event) {
+    if (!elTerms.checked) { // if the checkbox ticked
+        elTermsHint.innerHTML = 'You must agree to the terms.'; // show msg 
+        event.preventDefault(); // prevent the default behavior from submitting data
+    }
+}
+
+// using event listener 
+elForm.addEventListener('submit', checkTerms, false);
+elSelectPackage.addEventListener('change', packageHint, false);
+
+
+
+// USING MUTATION EVENTS 
+var addLink, elList, newEl, listItems, counter, newText; // declare variables
+addLink = document.querySelector('a'); // query to the a element 
+elList = document.getElementById('list'); // query to the ul element 
+counter = document.getElementById('counter'); // query to the span element with the id counter 
+
+function addItem(e) {
+    e.preventDefault(); // prevent the default behaviour of the a element when event listener call the a element
+    newEl = document.createElement('li'); // create a new li element (need to be add to the ul element)
+    newText = document.createTextNode('New list item'); // create text node to show the text in the li element you just created before
+    newEl.appendChild(newText); // add the text node to the li element you just created before
+    elList.appendChild(newEl); // add the li element to the ul element
+}
+
+function updateCount() {
+    listItems = list.getElementsByTagName('li').length; // count how many li element it have 
+    counter.innerHTML = listItems; // update the counter show in the span element 
+}
+
+addLink.addEventListener('click', addItem, false);
+elList.addEventListener('DOMNodeInserted', updateCount, false);
